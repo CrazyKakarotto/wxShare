@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>车晴123</title>
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+    wxShare车晴123
+    <img src="images/wdw.jpg" alt="">
+    <script>
+        var link = location.href;
+        $.get('http://wdw.s1.natapp.cc/geturl', {
+            id: link
+        }, function(data) {
+            wx.config({
+                debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+                appId: 'wx65081d5f2c39697c', // 必填，公众号的唯一标识
+                timestamp: data.timestamp, // 必填，生成签名的时间戳
+                nonceStr: data.nonceStr, // 必填，生成签名的随机串
+                signature: data.signature,// 必填，签名，见附录1
+                jsApiList: [
+                    "onMenuShareTimeline",
+                    "onMenuShareAppMessage"
+                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            });
+            wx.error(function (res) {
+                alert(22222);
+            });
+            wx.ready(function(res) {
+                alert('123!!!!!!!!!!!!')
+                wx.onMenuShareAppMessage({
+                    title: '送你小心心',
+                    desc:'wxShare',
+                    link: link,
+                    imgUrl: 'http://images.clipartlogo.com/files/images/39/399702/x-icon-clip-art_p.jpg',
+                    trigger: function(res) {},
+                    success: function(res) {
+                        alert(1111111111)
+                    },
+                    cancel: function(res) {},
+                    fail: function(res) {}
+                });
+                wx.onMenuShareTimeline({
+                    title: 'wxShare',
+                    link: link,
+                    imgUrl: 'http://images.clipartlogo.com/files/images/39/399702/x-icon-clip-art_p.jpg',
+                    trigger: function(res) {},
+                    success: function(res) {
+                        alert(111111111)
+                    },
+                    cancel: function(res) {},
+                    fail: function(res) {}
+                });
+            });
+        })
+
+        /* fetch(`http://wdw.s1.natapp.cc/geturl?id=${link}`).then(res => {
+            return res.json();
+        }).then((data) => {
+            wx.config({
+                debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来
+                appId: 'wx65081d5f2c39697c', // 必填，公众号的唯一标识
+                timestamp: data.timestamp, // 必填，生成签名的时间戳
+                nonceStr: data.nonceStr, // 必填，生成签名的随机串
+                signature: data.signature,// 必填，签名，见附录1
+                jsApiList: [
+                    "onMenuShareTimeline",
+                    "onMenuShareAppMessage"
+                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            });
+            wx.error(function (res) {
+                alert(22222);
+            });
+            wx.ready(function(res) {
+                alert('123!!!!!!!!!!!!')
+                wx.onMenuShareAppMessage({
+                    title: 'wxShare',
+                    desc:'wxShare',
+                    link: link,
+                    imgUrl: 'http://images.clipartlogo.com/files/images/39/399702/x-icon-clip-art_p.jpg',
+                    trigger: function(res) {},
+                    success: function(res) {
+                        alert(1111111111)
+                    },
+                    cancel: function(res) {},
+                    fail: function(res) {}
+                });
+                wx.onMenuShareTimeline({
+                    title: 'wxShare',
+                    link: link,
+                    imgUrl: 'http://images.clipartlogo.com/files/images/39/399702/x-icon-clip-art_p.jpg',
+                    trigger: function(res) {},
+                    success: function(res) {
+                        alert(111111111)
+                    },
+                    cancel: function(res) {},
+                    fail: function(res) {}
+                });
+            });
+        }).catch(error => {
+            alert('fetch错误')
+        }) */
+    </script>
+</body>
+</html>

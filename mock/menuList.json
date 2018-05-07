@@ -1,0 +1,9 @@
+{
+    "moxieCreditCardRiskDataUserBaseInfo": {
+        "activeCardNum": 1,
+        "bankNum": 2,
+        "pvcuCustomerGroupTag": 3,
+        "pvcu_cashouts_tag": 4,
+        "is_compulsoryExecutionRecords": 5
+    }
+}
